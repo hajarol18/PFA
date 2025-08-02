@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Vue liste des intrants et ressources -->
+    <record id="view_intrants_list" model="ir.ui.view">
+        <field name="name">intrants.ressources.list</field>
+        <field name="model">intrants.ressources</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <list string="Intrants et Ressources">
+                <field name="nom"/>
+                <field name="exploitation_id"/>
+                <field name="type_ressource"/>
+                <field name="date_utilisation"/>
+                <field name="quantite_utilisee"/>
+                <field name="unite_mesure"/>
+                <field name="cout_total"/>
+                <field name="efficacite"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vue formulaire des intrants et ressources -->
+    <record id="view_intrants_form" model="ir.ui.view">
+        <field name="name">intrants.ressources.form</field>
+        <field name="model">intrants.ressources</field>
+        <field name="arch" type="xml">
+            <form string="Intrants et Ressources">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="nom"/>
+                            <field name="exploitation_id"/>
+                            <field name="parcelle_id"/>
+                            <field name="culture_id"/>
+                            <field name="type_ressource"/>
+                        </group>
+                        <group>
+                            <field name="date_utilisation"/>
+                            <field name="quantite_utilisee"/>
+                            <field name="unite_mesure"/>
+                            <field name="cout_unitaire"/>
+                            <field name="cout_total"/>
+                        </group>
+                    </group>
+                    
+                    <group>
+                        <group>
+                            <field name="efficacite"/>
+                            <field name="rendement_impact"/>
+                            <field name="impact_environnemental"/>
+                        </group>
+                        <group>
+                            <field name="source_ressource"/>
+                            <field name="fournisseur"/>
+                        </group>
+                    </group>
+                    
+                    <field name="observations"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action pour les intrants et ressources -->
+    <record id="action_intrants_ressources" model="ir.actions.act_window">
+        <field name="name">Intrants et Ressources</field>
+        <field name="res_model">intrants.ressources</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créez votre première entrée d'intrants et ressources
+            </p>
+        </field>
+    </record>
+
+    <!-- Vue liste des stocks d'intrants -->
+    <record id="view_stock_list" model="ir.ui.view">
+        <field name="name">stock.intrants.list</field>
+        <field name="model">stock.intrants</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <list string="Stock d'Intrants">
+                <field name="nom"/>
+                <field name="exploitation_id"/>
+                <field name="type_intrant"/>
+                <field name="quantite_stock"/>
+                <field name="quantite_min"/>
+                <field name="unite_mesure"/>
+                <field name="valeur_stock"/>
+                <field name="etat_stock"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vue formulaire des stocks d'intrants -->
+    <record id="view_stock_form" model="ir.ui.view">
+        <field name="name">stock.intrants.form</field>
+        <field name="model">stock.intrants</field>
+        <field name="arch" type="xml">
+            <form string="Stock d'Intrants">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="nom"/>
+                            <field name="exploitation_id"/>
+                            <field name="type_intrant"/>
+                            <field name="unite_mesure"/>
+                        </group>
+                        <group>
+                            <field name="quantite_stock"/>
+                            <field name="quantite_min"/>
+                            <field name="cout_unitaire"/>
+                            <field name="valeur_stock"/>
+                        </group>
+                    </group>
+                    
+                    <group>
+                        <field name="fournisseur"/>
+                        <field name="date_dernier_achat"/>
+                        <field name="etat_stock"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action pour les stocks d'intrants -->
+    <record id="action_stock_intrants" model="ir.actions.act_window">
+        <field name="name">Stock d'Intrants</field>
+        <field name="res_model">stock.intrants</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créez votre premier stock d'intrants
+            </p>
+        </field>
+    </record>
+</odoo> 

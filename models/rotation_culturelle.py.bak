@@ -1,0 +1,102 @@
+from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+
+class RotationCulturelle(models.Model):
+    _name = 'rotation.culturelle'
+    _description = 'Rotation Culturelle'
+    _rec_name = 'nom'
+    _order = 'sequence'
+
+    nom = fields.Char(string="Nom de la rotation", required=True)
+    sequence = fields.Integer(string="Séquence", default=10)
+    exploitation_id = fields.Many2one('exploitation.agri', string="Exploitation", required=True)
+    parcelle_id = fields.Many2one('parcelle.agri', string="Parcelle", required=True)
+    
+    # Planification de la rotation
+    annee_debut = fields.Integer(string="Année de début", required=True, default=lambda self: fields.Date.today().year)
+    duree_rotation = fields.Integer(string="Durée de rotation (années)", default=4)
+    
+    # Cultures dans la rotation
+    cultures_rotation_ids = fields.One2many('culture.rotation', 'rotation_id', string="Cultures de la rotation")
+    
+    # Objectifs
+    objectif_rendement = fields.Float(string="Objectif de rendement moyen (t/ha)")
+    objectif_qualite = fields.Selection([
+        ('excellente', 'Excellente'),
+        ('bonne', 'Bonne'),
+        ('moyenne', 'Moyenne'),
+        ('faible', 'Faible'),
+    ], string="Objectif qualité", default='bonne')
+    
+    # Avantages de la rotation
+    avantages_ids = fields.Many2many('avantage.rotation', string="Avantages")
+    
+    # État
+    etat = fields.Selection([
+        ('planifie', 'Planifié'),
+        ('en_cours', 'En cours'),
+        ('termine', 'Terminé'),
+        ('abandonne', 'Abandonné'),
+    ], string="État", default='planifie')
+    
+    # Notes
+    observations = fields.Text(string="Observations")
+    
+    @api.constrains('duree_rotation')
+    def _check_duree(self):
+        for record in self:
+            if record.duree_rotation < 2:
+                raise ValidationError("La durée de rotation doit être d'au moins 2 ans.")
+    
+    def action_demarrer_rotation(self):
+        """Démarrer la rotation"""
+        for record in self:
+            record.etat = 'en_cours'
+    
+    def action_terminer_rotation(self):
+        """Terminer la rotation"""
+        for record in self:
+            record.etat = 'termine'
+
+class CultureRotation(models.Model):
+    _name = 'culture.rotation'
+    _description = 'Culture dans la rotation'
+    _order = 'annee, sequence'
+
+    rotation_id = fields.Many2one('rotation.culturelle', string="Rotation", required=True)
+    culture_id = fields.Many2one('culture.agri', string="Culture", required=True)
+    
+    annee = fields.Integer(string="Année", required=True)
+    sequence = fields.Integer(string="Séquence dans l'année", default=1)
+    
+    # Données de performance
+    rendement_obtenu = fields.Float(string="Rendement obtenu (t/ha)")
+    qualite_obtenue = fields.Selection([
+        ('excellente', 'Excellente'),
+        ('bonne', 'Bonne'),
+        ('moyenne', 'Moyenne'),
+        ('faible', 'Faible'),
+    ], string="Qualité obtenue")
+    
+    # Observations
+    observations = fields.Text(string="Observations")
+    
+    @api.constrains('annee')
+    def _check_annee(self):
+        for record in self:
+            if record.annee < record.rotation_id.annee_debut:
+                raise ValidationError("L'année ne peut pas être antérieure à l'année de début de la rotation.")
+
+class AvantageRotation(models.Model):
+    _name = 'avantage.rotation'
+    _description = 'Avantage de rotation'
+    _rec_name = 'nom'
+
+    nom = fields.Char(string="Nom de l'avantage", required=True)
+    description = fields.Text(string="Description")
+    categorie = fields.Selection([
+        ('agronomique', 'Agronomique'),
+        ('economique', 'Économique'),
+        ('environnemental', 'Environnemental'),
+        ('sanitaire', 'Sanitaire'),
+    ], string="Catégorie", default='agronomique') 
