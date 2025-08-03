@@ -5,7 +5,7 @@
     
     <!-- 1. Gestion des Cultures -->
     <menuitem id="menu_cultures_main" name="🌱 Gestion des Cultures" parent="menu_agriculture_root" sequence="10"/>
-    <menuitem id="menu_cultures" name="📋 Cultures" parent="menu_cultures_main" sequence="10"/>
+    <menuitem id="menu_cultures" name="📋 Cultures" parent="menu_cultures_main" action="action_culture_agri" sequence="10"/>
     <menuitem id="menu_rotations" name="🔄 Rotations culturales" parent="menu_cultures_main" sequence="20"/>
     <menuitem id="menu_historique_rendements" name="📊 Historique des rendements" parent="menu_cultures_main" sequence="30"/>
     
