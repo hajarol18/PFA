@@ -12,9 +12,9 @@
     <!-- 2. Gestion des Exploitations -->
     <menuitem id="menu_exploitations_main" name="🚜 Gestion des Exploitations" parent="menu_agriculture_root" sequence="20"/>
     <menuitem id="menu_exploitations" name="🏡 Exploitations agricoles" parent="menu_exploitations_main" action="action_exploitation_agri" sequence="10"/>
-    <menuitem id="menu_parcelles" name="📍 Parcelles cultivées" parent="menu_exploitations_main" sequence="20"/>
-    <menuitem id="menu_interventions" name="📅 Interventions agricoles" parent="menu_exploitations_main" sequence="30"/>
-    <menuitem id="menu_intrants" name="💧 Intrants et ressources" parent="menu_exploitations_main" sequence="40"/>
+    <menuitem id="menu_parcelles" name="📍 Parcelles cultivées" parent="menu_exploitations_main" action="action_parcelle_agri" sequence="20"/>
+    <menuitem id="menu_interventions" name="📅 Interventions agricoles" parent="menu_exploitations_main" action="action_intervention_agri" sequence="30"/>
+    <menuitem id="menu_intrants" name="💧 Intrants et ressources" parent="menu_exploitations_main" action="action_intrant_agri" sequence="40"/>
     <menuitem id="menu_rendements" name="📈 Rendements enregistrés" parent="menu_exploitations_main" sequence="50"/>
     
     <!-- 3. Données Climatiques -->
