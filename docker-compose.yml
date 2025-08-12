@@ -6,11 +6,10 @@ services:
     environment:
       - POSTGRES_USER=odoo
       - POSTGRES_PASSWORD=odoo18@2024
-      - POSTGRES_DB=postgres
+      - POSTGRES_DB=odoorefait18
     restart: always             # run as a service
     volumes:
         - ./postgresql:/var/lib/postgresql/data
-
   odoo18:
     image: odoo:18
     user: root
