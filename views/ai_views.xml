@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Prediction -->
+    <record id="view_ai_prediction_tree" model="ir.ui.view">
+        <field name="name">ai.prediction.tree</field>
+        <field name="model">ai.prediction</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="parcelle_id"/>
+                <field name="culture_id"/>
+                <field name="rendement_prevu"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_ai_prediction_form" model="ir.ui.view">
+        <field name="name">ai.prediction.form</field>
+        <field name="model">ai.prediction</field>
+        <field name="arch" type="xml">
+            <form string="Prédiction de rendement">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="parcelle_id"/>
+                        <field name="culture_id"/>
+                        <field name="rendement_prevu"/>
+                    </group>
+                    <footer>
+                        <button name="action_calculer" type="object" string="Calculer" class="btn-primary"/>
+                        <button string="Fermer" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Recommandations -->
+    <record id="view_ai_recommandation_tree" model="ir.ui.view">
+        <field name="name">ai.recommandation.tree</field>
+        <field name="model">ai.recommandation</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="parcelle_id"/>
+                <field name="culture_suggeree"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_ai_recommandation_form" model="ir.ui.view">
+        <field name="name">ai.recommandation.form</field>
+        <field name="model">ai.recommandation</field>
+        <field name="arch" type="xml">
+            <form string="Recommandations optimales">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="parcelle_id"/>
+                        <field name="culture_suggeree"/>
+                        <field name="raison"/>
+                    </group>
+                    <footer>
+                        <button name="action_recommander" type="object" string="Recommander" class="btn-primary"/>
+                        <button string="Fermer" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Stress -->
+    <record id="view_ai_stress_tree" model="ir.ui.view">
+        <field name="name">ai.stress.tree</field>
+        <field name="model">ai.stress</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="parcelle_id"/>
+                <field name="type_stress"/>
+                <field name="niveau"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_ai_stress_form" model="ir.ui.view">
+        <field name="name">ai.stress.form</field>
+        <field name="model">ai.stress</field>
+        <field name="arch" type="xml">
+            <form string="Détection des stress">
+                <sheet>
+                    <group>
+                        <field name="parcelle_id"/>
+                        <field name="type_stress"/>
+                        <field name="niveau"/>
+                    </group>
+                    <footer>
+                        <button name="action_detecter" type="object" string="Détecter" class="btn-primary"/>
+                        <button string="Fermer" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Simulation -->
+    <record id="view_ai_simulation_tree" model="ir.ui.view">
+        <field name="name">ai.simulation.tree</field>
+        <field name="model">ai.simulation</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="scenario"/>
+                <field name="annee"/>
+                <field name="impact_rendement"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_ai_simulation_form" model="ir.ui.view">
+        <field name="name">ai.simulation.form</field>
+        <field name="model">ai.simulation</field>
+        <field name="arch" type="xml">
+            <form string="Simulation de scénarios">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="scenario"/>
+                        <field name="annee"/>
+                        <field name="impact_rendement"/>
+                    </group>
+                    <footer>
+                        <button name="action_simuler" type="object" string="Simuler" class="btn-primary"/>
+                        <button string="Fermer" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Optimisation -->
+    <record id="view_ai_optimisation_tree" model="ir.ui.view">
+        <field name="name">ai.optimisation.tree</field>
+        <field name="model">ai.optimisation</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="ressource"/>
+                <field name="quantite_actuelle"/>
+                <field name="quantite_optimale"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_ai_optimisation_form" model="ir.ui.view">
+        <field name="name">ai.optimisation.form</field>
+        <field name="model">ai.optimisation</field>
+        <field name="arch" type="xml">
+            <form string="Optimisation des ressources">
+                <sheet>
+                    <group>
+                        <field name="ressource"/>
+                        <field name="quantite_actuelle"/>
+                        <field name="quantite_optimale"/>
+                    </group>
+                    <footer>
+                        <button name="action_optimiser" type="object" string="Optimiser" class="btn-primary"/>
+                        <button string="Fermer" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_ai_prediction" model="ir.actions.act_window">
+        <field name="name">Prédiction de rendement</field>
+        <field name="res_model">ai.prediction</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="action_ai_recommandation" model="ir.actions.act_window">
+        <field name="name">Recommandations optimales</field>
+        <field name="res_model">ai.recommandation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="action_ai_stress" model="ir.actions.act_window">
+        <field name="name">Détection des stress</field>
+        <field name="res_model">ai.stress</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="action_ai_simulation" model="ir.actions.act_window">
+        <field name="name">Simulation de scénarios</field>
+        <field name="res_model">ai.simulation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="action_ai_optimisation" model="ir.actions.act_window">
+        <field name="name">Optimisation des ressources</field>
+        <field name="res_model">ai.optimisation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

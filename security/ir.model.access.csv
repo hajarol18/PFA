@@ -4,3 +4,8 @@ access_culture_agri,culture.agri,model_culture_agri,base.group_user,1,1,1,1
 access_parcelle_agri,parcelle.agri,model_parcelle_agri,base.group_user,1,1,1,1
 access_intervention_agri,intervention.agri,model_intervention_agri,base.group_user,1,1,1,1
 access_intrant_agri,intrant.agri,model_intrant_agri,base.group_user,1,1,1,1
+access_ai_prediction,ai.prediction,model_ai_prediction,base.group_user,1,1,1,1
+access_ai_recommandation,ai.recommandation,model_ai_recommandation,base.group_user,1,1,1,1
+access_ai_stress,ai.stress,model_ai_stress,base.group_user,1,1,1,1
+access_ai_simulation,ai.simulation,model_ai_simulation,base.group_user,1,1,1,1
+access_ai_optimisation,ai.optimisation,model_ai_optimisation,base.group_user,1,1,1,1
