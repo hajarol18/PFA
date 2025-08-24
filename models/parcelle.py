@@ -69,9 +69,13 @@ class Parcelle(models.Model):
     @api.depends('cultures_ids.rendement_effectif')
     def _compute_rendement_moyen(self):
         for record in self:
-            cultures_terminees = record.cultures_ids.filtered(lambda c: c.etat_culture == 'terminee' and c.rendement_effectif > 0)
+            cultures_terminees = record.cultures_ids.filtered(
+                lambda c: c.etat_culture == 'terminee' and c.rendement_effectif > 0
+            )
             if cultures_terminees:
-                record.rendement_moyen = sum(cultures_terminees.mapped('rendement_effectif')) / len(cultures_terminees)
+                record.rendement_moyen = (
+                    sum(cultures_terminees.mapped('rendement_effectif')) / len(cultures_terminees)
+                )
             else:
                 record.rendement_moyen = 0.0
     
@@ -85,4 +89,5 @@ class Parcelle(models.Model):
     def _check_ph(self):
         for record in self:
             if record.ph_sol and (record.ph_sol < 0 or record.ph_sol > 14):
-                raise ValidationError("Le pH doit être entre 0 et 14.") 
+                raise ValidationError("Le pH doit être entre 0 et 14.")
+

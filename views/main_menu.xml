@@ -26,11 +26,11 @@
     
     <!-- 4. Intelligence Artificielle -->
     <menuitem id="menu_ia_main" name="🤖 IA &amp; Aide à la décision" parent="menu_agriculture_root" sequence="40"/>
-    <menuitem id="menu_prediction" name="📈 Prédiction de rendement" parent="menu_ia_main" sequence="10"/>
-    <menuitem id="menu_recommandations" name="✅ Recommandations optimales" parent="menu_ia_main" sequence="20"/>
-    <menuitem id="menu_stress" name="🚩 Détection des stress" parent="menu_ia_main" sequence="30"/>
-    <menuitem id="menu_simulation" name="🔮 Simulation de scénarios" parent="menu_ia_main" sequence="40"/>
-    <menuitem id="menu_optimisation" name="♻️ Optimisation des ressources" parent="menu_ia_main" sequence="50"/>
+    <menuitem id="menu_prediction" name="📈 Prédiction de rendement" parent="menu_ia_main" action="action_ai_prediction" sequence="10"/>
+    <menuitem id="menu_recommandations" name="✅ Recommandations optimales" parent="menu_ia_main" action="action_ai_recommandation" sequence="20"/>
+    <menuitem id="menu_stress" name="🚩 Détection des stress" parent="menu_ia_main" action="action_ai_stress" sequence="30"/>
+    <menuitem id="menu_simulation" name="🔮 Simulation de scénarios" parent="menu_ia_main" action="action_ai_simulation" sequence="40"/>
+    <menuitem id="menu_optimisation" name="♻️ Optimisation des ressources" parent="menu_ia_main" action="action_ai_optimisation" sequence="50"/>
     
     <!-- 5. Tableaux de Bord -->
     <menuitem id="menu_dashboard_main" name="📊 Tableaux de Bord" parent="menu_agriculture_root" sequence="50"/>

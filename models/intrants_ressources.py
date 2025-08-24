@@ -147,11 +147,9 @@ class Intrant(models.Model):
                 record.date_utilisation = fields.Date.today()
             else:
                 raise ValidationError("Stock insuffisant pour cette utilisation.")
-    
+
     @api.model
     def get_stock_alert(self):
         """Retourner les intrants avec stock faible"""
-        return self.search([
-            ('stock_disponible', '<=', 'stock_minimum'),
-            ('stock_disponible', '>', 0)
-        ]) 
+        return self.filtered(lambda r: 0 < r.stock_disponible <= r.stock_minimum)
+

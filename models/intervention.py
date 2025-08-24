@@ -122,4 +122,5 @@ class Intervention(models.Model):
     def action_annuler(self):
         """Annuler l'intervention"""
         for record in self:
-            record.etat = 'annulee' 
+            record.etat = 'annulee'
+

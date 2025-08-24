@@ -1,0 +1,11 @@
+<odoo>
+    <record id="demo_ai_prediction" model="ai.prediction">
+        <field name="name">Prévision démo</field>
+        <field name="rendement_prevu">32.5</field>
+    </record>
+    <record id="demo_ai_recommandation" model="ai.recommandation">
+        <field name="name">Recommandation démo</field>
+        <field name="culture_suggeree">Blé</field>
+        <field name="raison">Données de démonstration</field>
+    </record>
+</odoo>
